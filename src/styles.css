@@ -1,0 +1,301 @@
+:root {
+  --cream: #F7F3EE;
+  --cream-dark: #EDE6DC;
+  --terracotta: #C17A5A;
+  --terracotta-light: #D4967A;
+  --sage: #A8B5A0;
+  --sage-dark: #8A9B7F;
+  --espresso: #2D2319;
+  --espresso-light: #4A3C2E;
+  --blush: #E8D5D0;
+  --blush-light: #F5EBE8;
+  --gold: #D4A574;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--espresso);
+  overflow-x: hidden;
+}
+
+.app-container {
+  min-height: 100vh;
+  position: relative;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(168, 181, 160, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(193, 122, 90, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(232, 213, 208, 0.2) 0%, transparent 70%),
+    var(--cream);
+}
+
+/* Paper texture overlay */
+.app-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Botanical overlay elements */
+.botanical-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.botanical-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+.botanical-1 {
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  right: -100px;
+  background: radial-gradient(circle, var(--sage) 0%, transparent 70%);
+}
+
+.botanical-2 {
+  width: 300px;
+  height: 300px;
+  bottom: 20%;
+  left: -80px;
+  background: radial-gradient(circle, var(--blush) 0%, transparent 70%);
+}
+
+.botanical-3 {
+  width: 250px;
+  height: 250px;
+  top: 40%;
+  right: 5%;
+  background: radial-gradient(circle, var(--terracotta-light) 0%, transparent 70%);
+  opacity: 0.2;
+}
+
+/* Navigation */
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 4rem;
+  z-index: 100;
+  background: linear-gradient(to bottom, var(--cream) 60%, transparent);
+}
+
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--espresso);
+}
+
+.logo-tagline {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-top: -2px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  color: var(--espresso-light);
+  cursor: pointer;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--terracotta);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--espresso);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.cta-button {
+  background: var(--terracotta);
+  color: var(--cream);
+  border: none;
+  padding: 0.85rem 1.8rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background: var(--espresso);
+}
+
+/* Main content */
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 100px;
+}
+
+.full-section {
+  padding: 2rem 4rem;
+}
+
+/* Section titles */
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 400;
+  color: var(--espresso);
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 2rem;
+}
+
+/* Cards */
+.card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(193, 122, 90, 0.1);
+  border-radius: 4px;
+  padding: 2rem;
+  transition: all 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(45, 35, 25, 0.1);
+  border-color: rgba(193, 122, 90, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .main-nav {
+    padding: 1rem 2rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
+  }
+
+  .full-section {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-nav {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+  }
+
+  .cta-button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .botanical-1,
+  .botanical-2,
+  .botanical-3 {
+    display: none;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--terracotta-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--terracotta);
+}
+
+/* Selection */
+::selection {
+  background: var(--sage);
+  color: var(--espresso);
+}
